@@ -8,6 +8,7 @@ import Hotel.Rooms.DiningRoom;
 import Hotel.Rooms.Room;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 
 public class Hotel {
@@ -77,6 +78,21 @@ public class Hotel {
         return room.removeGuest(guest);
     }
 
+    public boolean checkIn(Guest guest, int roomNumber) {
+        for (Bedroom room : bedrooms){
+           if (room.getRoomNumber() == roomNumber) return room.addGuest(guest);
+        }
+        return false;
+    }
+
+    public boolean checkOut(Guest guest, int roomNumber) {
+        for (Bedroom room : bedrooms){
+            if (room.getRoomNumber() == roomNumber) return room.removeGuest(guest);
+        }
+        return false;
+    }
+
+
     public int countBookings(){
         return bookings.size();
     }
@@ -85,6 +101,14 @@ public class Hotel {
         BedroomBooking booking = new BedroomBooking(bedroom, nights);
         bookings.add(booking);
         return booking;
+    }
+
+    public ArrayList<Bedroom> getEmptyRooms(){
+        ArrayList<Bedroom> result = new ArrayList<>();
+        for (Bedroom room : bedrooms){
+            if (room.countGuests() == 0) result.add(room);
+        }
+        return result;
     }
 }
 

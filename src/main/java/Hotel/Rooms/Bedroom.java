@@ -1,5 +1,7 @@
 package Hotel.Rooms;
 
+import Hotel.People.Guest;
+
 public class Bedroom extends Room{
     public enum RoomType {
         SINGLE(1, 10.00),

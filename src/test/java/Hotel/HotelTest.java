@@ -102,4 +102,14 @@ public class HotelTest {
         hotel.demolishRoom(diningRoom);
         assertEquals(0, hotel.countDiningRooms());
     }
+
+    @Test
+    public void canReturnEmptyBedRooms(){
+        Bedroom newRoom = new Bedroom(2, Bedroom.RoomType.SINGLE);
+        hotel.createRoom(newRoom);
+        hotel.createRoom(bedroom);
+        hotel.checkIn(guest, 1);
+        hotel.checkIn(guest, 1);
+        assertEquals(1, hotel.getEmptyRooms().size());
+    }
 }

@@ -30,7 +30,7 @@ public abstract class Room {
     }
 
     public boolean addGuest(Guest guest){
-        if (capacity > countGuests()) {
+        if (this.getCapacity() > countGuests()) {
             return guests.add(guest);
         }
         return false;

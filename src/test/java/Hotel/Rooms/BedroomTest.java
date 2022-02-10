@@ -1,8 +1,7 @@
-package Rooms;
+package Hotel.Rooms;
 
 import Hotel.People.Guest;
 import Hotel.Rooms.Bedroom;
-import Hotel.Rooms.RoomType;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -13,7 +12,7 @@ public class BedroomTest {
 
     @Before
     public void before(){
-        bedroom = new Bedroom(1, RoomType.DOUBLE);
+        bedroom = new Bedroom(1, Bedroom.RoomType.DOUBLE);
     }
 
     @Test
@@ -23,7 +22,7 @@ public class BedroomTest {
 
     @Test
     public void hasRoomType(){
-        assertEquals(RoomType.DOUBLE, bedroom.getRoomType());
+        assertEquals(Bedroom.RoomType.DOUBLE, bedroom.getRoomType());
     }
 
     @Test
@@ -47,15 +46,20 @@ public class BedroomTest {
 
     @Test
     public void canChangeRoomType(){
-        bedroom.setRoomType(RoomType.SINGLE);
-        assertEquals(RoomType.SINGLE, bedroom.getRoomType());
+        bedroom.setRoomType(Bedroom.RoomType.SINGLE);
+        assertEquals(Bedroom.RoomType.SINGLE, bedroom.getRoomType());
     }
 
     @Test
     public void cannotAddGuestIfRoomFull(){
-        bedroom.setRoomType(RoomType.SINGLE);
+        bedroom.setRoomType(Bedroom.RoomType.SINGLE);
         Guest guest = new Guest("Niall");
         assertTrue(bedroom.addGuest(guest));
         assertFalse(bedroom.addGuest(guest));
+    }
+
+    @Test
+    public void canGetRate(){
+        assertEquals(20.00, bedroom.getRate(), 0.00);
     }
 }

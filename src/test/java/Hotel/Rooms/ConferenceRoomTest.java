@@ -1,4 +1,4 @@
-package Rooms;
+package Hotel.Rooms;
 
 import Hotel.Rooms.ConferenceRoom;
 import org.junit.Before;

@@ -1,10 +1,11 @@
 package Hotel;
 
 
+import Hotel.Bookings.BedroomBooking;
 import Hotel.People.Guest;
 import Hotel.Rooms.Bedroom;
 import Hotel.Rooms.ConferenceRoom;
-import Hotel.Rooms.RoomType;
+import Hotel.Rooms.DiningRoom;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -15,12 +16,14 @@ public class HotelTest {
     Bedroom bedroom;
     ConferenceRoom conferenceRoom;
     Guest guest;
+    DiningRoom diningRoom;
 
     @Before
     public void before(){
         hotel = new Hotel("The Holtin");
-        bedroom = new Bedroom(1, RoomType.MASTER);
+        bedroom = new Bedroom(1, Bedroom.RoomType.MASTER);
         conferenceRoom = new ConferenceRoom("Ballroom", 2);
+        diningRoom = new DiningRoom("The Lounge", 25);
         guest = new Guest("Niall");
     }
 
@@ -79,5 +82,24 @@ public class HotelTest {
     public void cannotCheckOutGuestNotInRoom(){
         hotel.createRoom(bedroom);
         assertFalse(hotel.checkOut(guest, bedroom));
+    }
+
+    @Test
+    public void canBookRoom(){
+        hotel.bookRoom(bedroom, 4);
+        assertEquals(1, hotel.countBookings());
+    }
+
+    @Test
+    public void canCreateDiningRoom(){
+        hotel.createRoom(diningRoom);
+        assertEquals(1, hotel.countDiningRooms());
+    }
+
+    @Test
+    public void canRemoveDiningRoom(){
+        hotel.createRoom(diningRoom);
+        hotel.demolishRoom(diningRoom);
+        assertEquals(0, hotel.countDiningRooms());
     }
 }

@@ -13,7 +13,7 @@ public class ConferenceRoomTest {
     public void before(){
         conferenceRoom = new ConferenceRoom("Ballroom", 50);
     }
-    
+
     @Test
     public void hasName(){
         assertEquals("Ballroom", conferenceRoom.getName());

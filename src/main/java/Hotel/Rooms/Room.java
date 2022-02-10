@@ -17,11 +17,26 @@ public abstract class Room {
         return capacity;
     }
 
+    public void setCapacity(int capacity) {
+        this.capacity = capacity;
+    }
+
     public ArrayList<Guest> getGuests() {
         return guests;
     }
 
     public int countGuests() {
         return guests.size();
+    }
+
+    public boolean addGuest(Guest guest){
+        if (capacity > countGuests()) {
+            return guests.add(guest);
+        }
+        return false;
+    }
+
+    public boolean removeGuest(Guest guest){
+        return guests.remove(guest);
     }
 }

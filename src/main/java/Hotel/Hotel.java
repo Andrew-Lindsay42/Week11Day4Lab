@@ -34,20 +34,36 @@ public class Hotel {
         return conferenceRooms.size();
     }
 
-    public void createRoom(Room room){
-        if (room instanceof Bedroom){
-            bedrooms.add((Bedroom) room);
-        } else {
-            conferenceRooms.add((ConferenceRoom) room);
-        }
+//    public void createRoom(Room room){
+//        if (room instanceof Bedroom){
+//            bedrooms.add((Bedroom) room);
+//        } else {
+//            conferenceRooms.add((ConferenceRoom) room);
+//        }
+//    }
+
+    public void createRoom(Bedroom bedroom){
+        bedrooms.add(bedroom);
     }
 
-    public void demolishRoom(Room room){
-        if (room instanceof Bedroom){
-            bedrooms.remove((Bedroom) room);
-        } else {
-            conferenceRooms.remove((ConferenceRoom) room);
-        }
+    public void createRoom(ConferenceRoom conferenceRoom){
+        conferenceRooms.add(conferenceRoom);
+    }
+
+//    public void demolishRoom(Room room){
+//        if (room instanceof Bedroom){
+//            bedrooms.remove((Bedroom) room);
+//        } else {
+//            conferenceRooms.remove((ConferenceRoom) room);
+//        }
+//    }
+
+    public void demolishRoom(Bedroom bedroom){
+        bedrooms.remove(bedroom);
+    }
+
+    public void demolishRoom(ConferenceRoom conferenceRoom){
+        conferenceRooms.remove(conferenceRoom);
     }
 
     public boolean checkIn(Guest guest, Room room) {

@@ -1,7 +1,7 @@
 package Hotel.People;
 
 public class Guest {
-    String name;
+    private String name;
 
     public Guest(String name) {
         this.name = name;

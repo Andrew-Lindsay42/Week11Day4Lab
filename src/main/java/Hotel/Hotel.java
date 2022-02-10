@@ -1,5 +1,6 @@
 package Hotel;
 
+import Hotel.People.Guest;
 import Hotel.Rooms.Bedroom;
 import Hotel.Rooms.ConferenceRoom;
 import Hotel.Rooms.Room;
@@ -49,4 +50,11 @@ public class Hotel {
         }
     }
 
+    public boolean checkIn(Guest guest, Room room) {
+        return room.addGuest(guest);
+    }
+
+    public boolean checkOut(Guest guest, Room room) {
+        return room.removeGuest(guest);
+    }
 }

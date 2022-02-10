@@ -8,7 +8,7 @@ import Hotel.Rooms.RoomType;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 public class HotelTest {
     Hotel hotel;
@@ -56,5 +56,28 @@ public class HotelTest {
         hotel.createRoom(bedroom);
         hotel.demolishRoom(bedroom);
         assertEquals(1, hotel.countBedrooms());
+    }
+
+    @Test
+    public void canCheckInAndOutGuest(){
+        hotel.createRoom(bedroom);
+        assertTrue(hotel.checkIn(guest, bedroom));
+        assertEquals(1, bedroom.countGuests());
+        assertTrue(hotel.checkOut(guest, bedroom));
+        assertEquals(0, bedroom.countGuests());
+    }
+
+    @Test
+    public void cannotCheckGuestIfRoomFull(){
+        hotel.createRoom(bedroom);
+        hotel.checkIn(guest, bedroom);
+        hotel.checkIn(guest, bedroom);
+        assertFalse(hotel.checkIn(guest, bedroom));
+    }
+
+    @Test
+    public void cannotCheckOutGuestNotInRoom(){
+        hotel.createRoom(bedroom);
+        assertFalse(hotel.checkOut(guest, bedroom));
     }
 }
